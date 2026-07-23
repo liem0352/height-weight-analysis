@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" role="img" aria-labelledby="distTitle distDesc">
+  <title id="distTitle">数据分布</title>
+  <desc id="distDesc">30 名大学生身高与体重直方图,叠加样本均值与标准差。身高近似正态分布,体重右偏。</desc>
+
+  <defs>
+    <style>
+      .stack { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .mono  { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    </style>
+  </defs>
+
+  <!-- 纸面背景 -->
+  <rect x="0" y="0" width="1200" height="320" rx="14" ry="14" fill="#FBF9F4"/>
+
+  <!-- 标题块 -->
+  <g transform="translate(48, 32)">
+    <rect x="0" y="0" width="56" height="3" fill="#6B4E8C"/>
+    <text x="0" y="28" class="mono" font-size="12" letter-spacing="2" fill="#8B8680">DATA DISTRIBUTION</text>
+    <text x="0" y="56" class="stack" font-size="22" font-weight="600" fill="#1A1A1A">数据分布</text>
+  </g>
+  <text x="1152" y="68" class="stack" font-size="13" fill="#8B8680" text-anchor="end">n=30 · 大学生样本 · bin width = 2 / 3</text>
+
+  <!-- ============ 左侧:身高直方图 ============ -->
+  <g transform="translate(48, 90)">
+    <rect x="0" y="0" width="536" height="200" rx="8" ry="8" fill="#FFFFFF" stroke="#E4E0D8" stroke-width="1"/>
+    <text x="20" y="28" class="stack" font-size="14" font-weight="600" fill="#1A1A1A">身高 x (cm)</text>
+    <text x="516" y="28" class="mono" font-size="11" fill="#8B8680" text-anchor="end">μ=170.57 · σ=3.72</text>
+
+    <!-- 绘图区: x in [40, 500] (宽 460), y in [44, 164] (高 120)
+         8 个 bin, 每个 56 宽, gap 1 -->
+    <!-- 网格线 -->
+    <g stroke="#EDE9E0" stroke-width="1">
+      <line x1="40" y1="44"  x2="500" y2="44"/>
+      <line x1="40" y1="74"  x2="500" y2="74"/>
+      <line x1="40" y1="104" x2="500" y2="104"/>
+      <line x1="40" y1="134" x2="500" y2="134"/>
+      <line x1="40" y1="164" x2="500" y2="164"/>
+    </g>
+
+    <!-- 坐标轴 -->
+    <line x1="40" y1="164" x2="500" y2="164" stroke="#1A1A1A" stroke-width="1"/>
+    <line x1="40" y1="44"  x2="40"  y2="164" stroke="#1A1A1A" stroke-width="1"/>
+
+    <!-- y 轴刻度 (count: 0,2,4,6) -->
+    <g class="mono" font-size="9" fill="#8B8680" text-anchor="end">
+      <text x="36" y="167">0</text>
+      <text x="36" y="137">2</text>
+      <text x="36" y="107">4</text>
+      <text x="36" y="77">6</text>
+      <text x="36" y="47">8</text>
+    </g>
+
+    <!-- 直方柱:8 bins, max=6 -> 6格 * 15px = 90... 等等让我重算
+         plot area height 120, max count 6 -> 6/6 * 120 = 120 (柱顶到 y=44)
+         bar width 56, gap 1: 8*56 + 7*1 = 455 (in 460) -->
+    <!-- bins: [164,166)=3, [166,168)=4, [168,170)=5, [170,172)=6, [172,174)=5, [174,176)=4, [176,178)=2, [178,180)=1 -->
+    <g fill="#6B4E8C">
+      <rect x="41"  y="104" width="56" height="60"/>  <!-- 3 -->
+      <rect x="98"  y="84"  width="56" height="80"/>  <!-- 4 -->
+      <rect x="155" y="64"  width="56" height="100"/> <!-- 5 -->
+      <rect x="212" y="44"  width="56" height="120"/> <!-- 6 -->
+      <rect x="269" y="64"  width="56" height="100"/> <!-- 5 -->
+      <rect x="326" y="84"  width="56" height="80"/>  <!-- 4 -->
+      <rect x="383" y="124" width="56" height="40"/>  <!-- 2 -->
+      <rect x="440" y="144" width="56" height="20"/>  <!-- 1 -->
+    </g>
+
+    <!-- 均值参考线 μ=170.57 -->
+    <!-- x=170.57 maps to: 40 + (170.57-164)/2 * 56 + 0.5*1 = ... 
+         Actually mean line should be at the position of value 170.57 on x-axis
+         x = 40 + (170.57 - 164) / (180 - 164) * 460 = 40 + 6.57/16 * 460 = 40 + 188.9 = 228.9 -->
+    <line x1="228.9" y1="44" x2="228.9" y2="164" stroke="#C44536" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="228.9" y="38" class="mono" font-size="10" fill="#C44536" text-anchor="middle">μ</text>
+
+    <!-- x 轴刻度 -->
+    <g class="mono" font-size="9" fill="#8B8680" text-anchor="middle">
+      <text x="41"  y="178">164</text>
+      <text x="155" y="178">168</text>
+      <text x="269" y="178">172</text>
+      <text x="383" y="178">176</text>
+      <text x="496" y="178">180</text>
+    </g>
+
+    <!-- 底部统计 -->
+    <text x="20" y="194" class="mono" font-size="10" fill="#8B8680">n=30 · min=164 · max=178 · range=14</text>
+  </g>
+
+  <!-- ============ 右侧:体重直方图 ============ -->
+  <g transform="translate(616, 90)">
+    <rect x="0" y="0" width="536" height="200" rx="8" ry="8" fill="#FFFFFF" stroke="#E4E0D8" stroke-width="1"/>
+    <text x="20" y="28" class="stack" font-size="14" font-weight="600" fill="#1A1A1A">体重 y (kg)</text>
+    <text x="516" y="28" class="mono" font-size="11" fill="#8B8680" text-anchor="end">μ=62.23 · σ=6.76</text>
+
+    <!-- 绘图区: x in [40, 500] (宽 460), y in [44, 164] (高 120)
+         9 bins, bar width 49, gap 2: 9*49 + 8*2 = 457 -->
+    <!-- 网格线 -->
+    <g stroke="#EDE9E0" stroke-width="1">
+      <line x1="40" y1="44"  x2="500" y2="44"/>
+      <line x1="40" y1="74"  x2="500" y2="74"/>
+      <line x1="40" y1="104" x2="500" y2="104"/>
+      <line x1="40" y1="134" x2="500" y2="134"/>
+      <line x1="40" y1="164" x2="500" y2="164"/>
+    </g>
+
+    <!-- 坐标轴 -->
+    <line x1="40" y1="164" x2="500" y2="164" stroke="#1A1A1A" stroke-width="1"/>
+    <line x1="40" y1="44"  x2="40"  y2="164" stroke="#1A1A1A" stroke-width="1"/>
+
+    <!-- y 轴刻度 (count: 0,1,2,3,4,5) -->
+    <g class="mono" font-size="9" fill="#8B8680" text-anchor="end">
+      <text x="36" y="167">0</text>
+      <text x="36" y="143">1</text>
+      <text x="36" y="119">2</text>
+      <text x="36" y="95">3</text>
+      <text x="36" y="71">4</text>
+      <text x="36" y="47">5</text>
+    </g>
+
+    <!-- 直方柱:9 bins, max=5 -> 5 * 24 = 120
+         [51,54)=3, [54,57)=4, [57,60)=4, [60,63)=5, [63,66)=5, [66,69)=4, [69,72)=2, [72,75)=1, [75,78)=2 -->
+    <g fill="#C44536">
+      <rect x="42" y="92"  width="49" height="72"/>   <!-- 3 -->
+      <rect x="93" y="68"  width="49" height="96"/>   <!-- 4 -->
+      <rect x="144" y="68" width="49" height="96"/>   <!-- 4 -->
+      <rect x="195" y="44" width="49" height="120"/>  <!-- 5 -->
+      <rect x="246" y="44" width="49" height="120"/>  <!-- 5 -->
+      <rect x="297" y="68" width="49" height="96"/>   <!-- 4 -->
+      <rect x="348" y="116" width="49" height="48"/>  <!-- 2 -->
+      <rect x="399" y="140" width="49" height="24"/>  <!-- 1 -->
+      <rect x="450" y="116" width="49" height="48"/>  <!-- 2 -->
+    </g>
+
+    <!-- 均值参考线 μ=62.23 -->
+    <!-- x = 40 + (62.23 - 51) / (78 - 51) * 460 = 40 + 11.23/27 * 460 = 40 + 191.3 = 231.3 -->
+    <line x1="231.3" y1="44" x2="231.3" y2="164" stroke="#6B4E8C" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="231.3" y="38" class="mono" font-size="10" fill="#6B4E8C" text-anchor="middle">μ</text>
+
+    <!-- x 轴刻度 -->
+    <g class="mono" font-size="9" fill="#8B8680" text-anchor="middle">
+      <text x="42"  y="178">51</text>
+      <text x="144" y="178">57</text>
+      <text x="246" y="178">63</text>
+      <text x="348" y="178">69</text>
+      <text x="450" y="178">75</text>
+    </g>
+
+    <!-- 底部统计 -->
+    <text x="20" y="194" class="mono" font-size="10" fill="#8B8680">n=30 · min=51 · max=76 · range=25</text>
+  </g>
+</svg>

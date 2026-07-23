@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="100%" role="img" aria-labelledby="termTitle termDesc">
+  <title id="termTitle">运行命令</title>
+  <desc id="termDesc">使用 Python 3 运行 height_weight_analysis.py,脚本依次输出 Shapiro-Wilk 检验、Pearson 相关系数与显著性 p 值,并绘制散点图与趋势线。</desc>
+
+  <defs>
+    <style>
+      .stack { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .mono  { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    </style>
+  </defs>
+
+  <!-- 纸面背景 -->
+  <rect x="0" y="0" width="1200" height="200" rx="14" ry="14" fill="#FBF9F4"/>
+
+  <!-- 左侧标签 -->
+  <g transform="translate(48, 32)">
+    <rect x="0" y="0" width="56" height="3" fill="#6B4E8C"/>
+    <text x="0" y="32" class="mono" font-size="12" letter-spacing="2" fill="#8B8680">QUICK START</text>
+    <text x="0" y="64" class="stack" font-size="22" font-weight="600" fill="#1A1A1A">一键运行</text>
+    <text x="0" y="92" class="stack" font-size="13" fill="#8B8680">Python 3 · numpy · scipy.stats · matplotlib</text>
+    <text x="0" y="120" class="stack" font-size="13" fill="#8B8680">输出检验 · 相关系数 · 散点图</text>
+  </g>
+
+  <!-- 终端卡片 -->
+  <g transform="translate(420, 32)">
+    <!-- 卡片阴影底 -->
+    <rect x="0" y="0" width="732" height="136" rx="8" ry="8" fill="#1A1A1A"/>
+
+    <!-- 顶部窗口栏 -->
+    <rect x="0" y="0" width="732" height="22" rx="8" ry="8" fill="#2A2A2A"/>
+    <rect x="0" y="14" width="732" height="8" fill="#2A2A2A"/>
+    <circle cx="14" cy="11" r="4" fill="#C44536"/>
+    <circle cx="28" cy="11" r="4" fill="#D6A35C"/>
+    <circle cx="42" cy="11" r="4" fill="#7BA56C"/>
+    <text x="366" y="15" class="mono" font-size="10" fill="#8B8680" text-anchor="middle">height_weight_analysis.py · bash</text>
+
+    <!-- 命令行 -->
+    <g transform="translate(20, 44)">
+      <text x="0" y="0" class="mono" font-size="13" fill="#7BA56C">$</text>
+      <text x="14" y="0" class="mono" font-size="13" fill="#FBF9F4">python height_weight_analysis.py</text>
+    </g>
+
+    <!-- 输出 -->
+    <g transform="translate(20, 70)" class="mono" font-size="11">
+      <text x="0" y="0" fill="#8B8680">Shapiro-Wilk  x: W=0.9798  p=0.8193  (normal)</text>
+      <text x="0" y="16" fill="#8B8680">Shapiro-Wilk  y: W=0.9769  p=0.7384  (normal)</text>
+      <text x="0" y="32" fill="#6B4E8C">Pearson       r=0.9954  p=3.9e-30  (strong positive)</text>
+      <text x="0" y="48" fill="#C44536">plot saved: scatter_with_trend.png</text>
+    </g>
+  </g>
+</svg>

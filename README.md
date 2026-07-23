@@ -1,16 +1,20 @@
 <p align="center">
-  <img src="assets/readme/hero.svg" alt="身高体重数据分析 — Shapiro-Wilk · Pearson · Spearman · 30 样本" width="100%">
+  <img src="assets/readme/hero.svg" alt="身高体重数据分析 - Shapiro-Wilk · Pearson · Spearman · 30 样本,散点图与回归趋势线" width="100%">
 </p>
 
 # 身高体重数据分析
 
-用 30 名大学生的身高与体重数据,走完一条完整的相关性分析流程:先做正态性检验,再据此选择 Pearson 或 Spearman,最后给出可解释的相关结论。
+用 30 名大学生的身高与体重数据,走完一条完整的相关性分析流程:先用 Shapiro-Wilk 检验正态性,再据此选择 Pearson 或 Spearman,最后给出可解释的相关结论。实测 **Pearson r ≈ 0.9954,p ≈ 3.9 × 10⁻³⁰**,身高与体重之间存在强正线性相关。
 
 ---
 
 ## 数据来源与证明
 
-右侧 hero 中的散点图即为本次分析的原生可视化:x 轴身高(cm)、y 轴体重(kg),散点呈左下到右上的正相关趋势,叠加一条回归趋势线。
+下方直方图基于 30 名大学生成对采集的身高 x 与体重 y,叠加均值 μ 与样本标准差 σ,作为后续一切检验的可视化证据。
+
+<p align="center">
+  <img src="assets/readme/data-distribution.svg" alt="数据分布:身高与体重直方图,叠加均值与标准差" width="100%">
+</p>
 
 **样本**:30 名大学生,成对采集身高 x 与体重 y。
 
@@ -46,7 +50,7 @@
 
 选择规则:
 
-- 两变量均正态(Shapiro-Wilk p > 0.05)→ **Pearson 相关**,衡量线性关系;
+- 两变量均正态(Shapiro-Wilk p > 0.05) → **Pearson 相关**,衡量线性关系;
 - 任一变量非正态,或为有序分类 → **Spearman 秩相关**,衡量单调关系。
 
 ---
@@ -96,6 +100,10 @@ Spearman ρ = Pearson( rank(x), rank(y) )
 
 ## 如何使用
 
+<p align="center">
+  <img src="assets/readme/terminal-usage.svg" alt="一键运行:python height_weight_analysis.py 输出检验与相关系数" width="100%">
+</p>
+
 依赖:Python 3 + numpy + scipy + matplotlib。
 
 ```bash
@@ -108,6 +116,8 @@ python height_weight_analysis.py
 
 ## 结果解读
 
+### 正态性检验
+
 基于上方 30 个真实样本,先做 Shapiro-Wilk 正态性检验:
 
 ```text
@@ -115,13 +125,35 @@ python height_weight_analysis.py
 体重 y :  W = 0.9769,  p = 0.7384   (p > 0.05,接受正态)
 ```
 
-两变量均通过正态性检验,故选用 **Pearson 相关**:
+两变量均通过正态性检验,故选用 **Pearson 相关**。
+
+### 相关性
+
+<p align="center">
+  <img src="assets/readme/correlation-analysis.svg" alt="相关性分析:30 样本散点图与 Pearson 回归趋势线,r ≈ 0.9954" width="100%">
+</p>
 
 ```text
 r ≈ 0.9954,  p ≈ 3.9 × 10⁻³⁰
 ```
 
-解读:r 接近 +1 且 p 远小于 0.05,表明大学生身高与体重之间存在**强正线性相关**——身高越高,体重倾向于越大,且这种线性趋势在统计上高度显著。散点图(见 hero)也直观印证了这一点:数据点紧密分布在趋势线两侧,无明显离群。
+解读:r 接近 +1 且 p 远小于 0.05,表明大学生身高与体重之间存在**强正线性相关** - 身高越高,体重倾向于越大,且这种线性趋势在统计上高度显著。散点图也直观印证了这一点:数据点紧密分布在趋势线两侧,无明显离群。
+
+### 回归模型对比
+
+<p align="center">
+  <img src="assets/readme/regression-models.svg" alt="回归模型对比:线性与多项式拟合,线性 R² ≈ 0.991" width="100%">
+</p>
+
+线性回归方程 **y = 1.809x − 246.38**,R² ≈ 0.991(由 r² 推得),已经解释了 99% 以上的方差。二次多项式作为对比,ΔR² ≈ 0.001,提升可忽略 - 这正印证了 Pearson 是合适选择:数据本身高度线性,无需引入多项式复杂度。
+
+### BMI 分析
+
+<p align="center">
+  <img src="assets/readme/bmi-analysis.svg" alt="BMI 分析:30 名大学生 BMI 分布直方图与中国成人分类参考线" width="100%">
+</p>
+
+以 BMI = 体重 / 身高² (m²) 衍生第三视角。30 名大学生 BMI 均值 **21.33 kg/m²**,范围 18.96 - 23.99,**全部 30 人落在正常区间(18.5 - 24)**,与中国成人 BMI 标准一致,样本健康度高。
 
 > 完整推导、检验中间量与图表说明见 [`实验报告.md`](实验报告.md)。
 
@@ -131,6 +163,6 @@ r ≈ 0.9954,  p ≈ 3.9 × 10⁻³⁰
 
 Python 3 · numpy · scipy.stats · matplotlib
 
-## 作者
-
-liem
+<p align="center">
+  <img src="assets/readme/footer.svg" alt="README MADE WITH 签名 - Shapiro-Wilk · Pearson · Spearman · 作者 liem · MIT License" width="100%">
+</p>

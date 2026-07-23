@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 140" width="100%" role="img" aria-labelledby="methodsTitle methodsDesc">
   <title id="methodsTitle">分析方法选择逻辑</title>
-  <desc id="methodsDesc">Shapiro-Wilk 正态性检验决定后续相关分析方法:p&gt;0.05 选用 Pearson,否则选用 Spearman。</desc>
+  <desc id="methodsDesc">Shapiro-Wilk 正态性检验决定后续相关分析方法:p &gt; 0.05 选用 Pearson,否则选用 Spearman。</desc>
 
   <defs>
     <style>
