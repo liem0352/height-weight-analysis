@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 140" width="100%" role="img" aria-labelledby="methodsTitle methodsDesc">
+  <title id="methodsTitle">分析方法选择逻辑</title>
+  <desc id="methodsDesc">Shapiro-Wilk 正态性检验决定后续相关分析方法:p&gt;0.05 选用 Pearson,否则选用 Spearman。</desc>
+
+  <defs>
+    <style>
+      .stack { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .mono  { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    </style>
+  </defs>
+
+  <!-- 纸面背景 -->
+  <rect x="0" y="0" width="1200" height="140" rx="8" ry="8" fill="#FBF9F4" stroke="#E4E0D8" stroke-width="1"/>
+
+  <!-- 左侧标签块 -->
+  <g transform="translate(48, 0)">
+    <rect x="0" y="0" width="4" height="140" fill="#6B4E8C"/>
+    <text x="20" y="44" class="mono" font-size="12" letter-spacing="2" fill="#8B8680">METHODS</text>
+    <text x="20" y="76" class="stack" font-size="22" font-weight="600" fill="#1A1A1A">分析方法</text>
+    <text x="20" y="102" class="stack" font-size="13" fill="#8B8680">由正态性检验驱动选择</text>
+  </g>
+
+  <!-- 流程链:三段卡片 + 两条连接线 -->
+  <!-- 卡片 1: Shapiro-Wilk -->
+  <g transform="translate(300, 30)">
+    <rect x="0" y="0" width="240" height="80" rx="8" ry="8" fill="#FFFFFF" stroke="#6B4E8C" stroke-width="1"/>
+    <text x="120" y="30" class="mono" font-size="11" letter-spacing="1.5" fill="#6B4E8C" text-anchor="middle">STEP 1</text>
+    <text x="120" y="54" class="stack" font-size="16" font-weight="600" fill="#1A1A1A" text-anchor="middle">Shapiro-Wilk 检验</text>
+    <text x="120" y="72" class="mono" font-size="11" fill="#8B8680" text-anchor="middle">p &gt; 0.05 ?</text>
+  </g>
+
+  <!-- 连接线 1 -->
+  <g>
+    <line x1="540" y1="70" x2="580" y2="70" stroke="#8B8680" stroke-width="1"/>
+    <polygon points="580,66 588,70 580,74" fill="#8B8680"/>
+  </g>
+
+  <!-- 分支标注 -->
+  <text x="560" y="62" class="mono" font-size="10" fill="#8B8680" text-anchor="middle">分支</text>
+
+  <!-- 卡片 2a: Pearson (正态) -->
+  <g transform="translate(588, 14)">
+    <rect x="0" y="0" width="260" height="44" rx="8" ry="8" fill="#FFFFFF" stroke="#6B4E8C" stroke-width="1"/>
+    <text x="14" y="20" class="mono" font-size="10" fill="#6B4E8C">p &gt; 0.05 · 正态</text>
+    <text x="14" y="36" class="stack" font-size="14" font-weight="600" fill="#1A1A1A">Pearson 相关</text>
+    <text x="246" y="28" class="mono" font-size="11" fill="#8B8680" text-anchor="end">线性关系</text>
+  </g>
+
+  <!-- 卡片 2b: Spearman (非正态) -->
+  <g transform="translate(588, 82)">
+    <rect x="0" y="0" width="260" height="44" rx="8" ry="8" fill="#FFFFFF" stroke="#C44536" stroke-width="1"/>
+    <text x="14" y="20" class="mono" font-size="10" fill="#C44536">p ≤ 0.05 · 非正态</text>
+    <text x="14" y="36" class="stack" font-size="14" font-weight="600" fill="#1A1A1A">Spearman 秩相关</text>
+    <text x="246" y="28" class="mono" font-size="11" fill="#8B8680" text-anchor="end">单调关系</text>
+  </g>
+
+  <!-- 连接线 2 (汇合到结果) -->
+  <g>
+    <line x1="848" y1="36" x2="888" y2="60" stroke="#8B8680" stroke-width="1"/>
+    <line x1="848" y1="104" x2="888" y2="80" stroke="#8B8680" stroke-width="1"/>
+  </g>
+
+  <!-- 卡片 3: 结果 -->
+  <g transform="translate(888, 30)">
+    <rect x="0" y="0" width="264" height="80" rx="8" ry="8" fill="#1A1A1A"/>
+    <text x="132" y="30" class="mono" font-size="11" letter-spacing="1.5" fill="#8B8680" text-anchor="middle">RESULT</text>
+    <text x="132" y="54" class="stack" font-size="16" font-weight="600" fill="#FBF9F4" text-anchor="middle">相关系数 r</text>
+    <text x="132" y="72" class="mono" font-size="11" fill="#8B8680" text-anchor="middle">[-1, +1] · 显著性 p</text>
+  </g>
+</svg>
